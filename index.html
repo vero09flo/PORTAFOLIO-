@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portafolio | Verónica Azucena Flores Girón</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400;1,500&family=Raleway:wght@200;300;400&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        /* CONFIGURACIÓN GLOBAL Y VARIABLES */
+        :root {
+            --bg-color: #fdfbf7;
+            --text-color: #2c2c2c;
+            --accent-color: #8d7b68;
+            --white: #ffffff;
+            --accent-green: #8da399;
+            --accent-gold: #a68a64;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* NAVEGACIÓN DINÁMICA */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(253, 251, 247, 0.95);
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            z-index: 1000;
+            border-bottom: 1px solid #eee;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-size: 0.7rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            transition: 0.3s;
+        }
+
+        nav a:hover { color: var(--accent-color); }
+
+        /* ANIMACIONES DE ENTRADA */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 1s ease-out;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* --- SECCIÓN 1: INICIO (BIO) --- */
+        #inicio { height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; }
+        .logo-main { width: 140px; margin-bottom: 2.5rem; }
+        h1 { font-family: 'Playfair Display', serif; font-size: clamp(1.5rem, 5vw, 2.8rem); letter-spacing: 5px; text-transform: uppercase; font-weight: 500; }
+        .profile-section { padding: 100px 10%; display: grid; grid-template-columns: 1fr 1fr; gap: 60px; background: var(--white); }
+        .image-wrapper { position: relative; width: 100%; max-width: 400px; }
+        .image-wrapper img { width: 100%; position: relative; z-index: 2; }
+        .image-wrapper::after { content: ''; position: absolute; top: 20px; left: 20px; width: 100%; height: 100%; border: 1px solid var(--accent-color); z-index: 1; }
+        .software-tag { border: 1px solid #ddd; padding: 6px 15px; font-size: 0.7rem; text-transform: uppercase; margin: 5px; display: inline-block; }
+
+        /* --- SECCIÓN 2: CO-LIVING --- */
+        #coliving { background: #fdfcfb; padding: 100px 5%; }
+        .project-header { text-align: center; margin-bottom: 60px; }
+        .project-header h2 { font-family: 'Playfair Display', serif; font-size: 3rem; }
+        .coliving-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
+        .visual-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; margin-top: 40px; }
+        .visual-grid img { width: 100%; height: 300px; object-fit: cover; }
+
+        /* --- SECCIÓN 3: STORHET --- */
+        #storhet { background: #ffffff; padding: 100px 5%; border-top: 1px solid #eee; }
+        .storhet-gallery { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; margin: 40px 0; }
+        .storhet-gallery img { width: 100%; height: 400px; object-fit: cover; transition: 0.5s; }
+        .storhet-gallery img:hover { filter: brightness(1.1); transform: scale(1.02); }
+
+        /* --- SECCIÓN 4: ALBA --- */
+        #alba { background: #fdfaf6; padding: 100px 5%; }
+        .alba-renders { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-top: 40px; }
+        .alba-card { background: white; padding: 15px; border: 1px solid #e0ddd7; text-align: center; }
+        .alba-card img { width: 100%; }
+
+        footer { text-align: center; padding: 60px; font-size: 0.7rem; letter-spacing: 2px; color: #888; text-transform: uppercase; }
+
+        @media (max-width: 768px) {
+            .profile-section, .coliving-grid, .storhet-gallery, .alba-renders { grid-template-columns: 1fr; }
+            h1 { font-size: 1.8rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="#inicio">Inicio</a>
+        <a href="#coliving">Co-living</a>
+        <a href="#storhet">Storhet</a>
+        <a href="#alba">Alba</a>
+    </nav>
+
+    <!-- INICIO / BIO -->
+    <header id="inicio">
+        <img src="https://res.cloudinary.com/dhsxjwlue/image/upload/v1777566764/logo_q3lojo.jpg" alt="Logo" class="logo-main">
+        <h1>Verónica Azucena Flores Girón</h1>
+        <p style="font-family: 'Playfair Display', serif; font-style: italic; color: var(--accent-color);">"Transformando ideas en experiencias habitables"</p>
+    </header>
+
+    <section class="profile-section reveal">
+        <div class="image-wrapper">
+            <img src="https://res.cloudinary.com/dhsxjwlue/image/upload/v1777568626/veronicaflores_ky6ds9.jpg" alt="Verónica Flores">
+        </div>
+        <div class="bio-content">
+            <h2 style="font-family: 'Playfair Display', serif; margin-bottom: 20px;">SOBRE MI</h2>
+            <p>Estudiante de arquitectura de 22 años enfocada en la funcionalidad y calidad espacial a través de herramientas digitales e inteligencia artificial.</p>
+            <div style="margin-top: 20px;">
+                <span class="software-tag">AutoCAD</span> <span class="software-tag">Revit</span> <span class="software-tag">V-Ray</span> <span class="software-tag">D5 Render</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROYECTO 1: CO-LIVING -->
+    <section id="coliving" class="reveal">
+        <div class="project-header">
+            <p style="letter-spacing: 4px; color: var(--accent-green); font-size: 0.8rem;">DEPARTAMENTOS, CAFÉ Y HUERTO</p>
+            <h2>CO-LIVING</h2>
+        </div>
+        <div class="coliving-grid">
+            <div>
+                <h3 style="font-family: 'Playfair Display', serif; margin-bottom: 15px;">CONCEPTO</h3>
+                <p>Ecosistema residencial dinámico que integra cuatro departamentos únicos, un café y la preservación de un huerto como corazón verde del conjunto.</p>
+            </div>
+            <img src="https://res.cloudinary.com/dhsxjwlue/image/upload/v1777566727/r1_nu1hpz.jpg" style="width: 100%;" alt="Exterior Co-living">
+        </div>
+        <div class="visual-grid">
+            <img src="https://res.cloudinary.com/dhsxjwlue/image/upload/v1777566726/r2_enpdxa.jpg" alt="R2">
+            <img src="https://res.cloudinary.com/dhsxjwlue/image/upload/v1777566726/r3_hgfi8p.jpg" alt="R3">
+        </div>
+    </section>
+
+    <!-- PROYECTO 2: STORHET -->
+    <section id="storhet" class="reveal">
+        <div class="project-header">
+            <p style="letter-spacing: 4px; color: #1a1a1a; font-size: 0.8rem;">DOSSIER ARQUITECTÓNICO</p>
+            <h2 style="letter-spacing: 10px;">STORHET</h2>
+        </div>
+        <p style="text-align: center; max-width: 800px; margin: 0 auto;">Edificio de uso mixto con 14 departamentos y 2 locales comerciales, priorizando una organización clara y funcional.</p>
+        <div class="storhet-gallery">
+            <img src="https://res.cloudinary.com/dhsxjwlue/image/upload/v1777566710/3_cwzwfq.jpg" alt="Fachada">
+            <img src="https://res.cloudinary.com/dhsxjwlue/image/upload/v1777566710/COMPETO_deyx5j.jpg" alt="Estancia">
+            <img src="https://res.cloudinary.com/dhsxjwlue/image/upload/v1777566710/RECAMARA2_sqtncj.jpg" alt="Privado">
+        </div>
+    </section>
+
+    <!-- PROYECTO 3: ALBA -->
+    <section id="alba" class="reveal">
+        <div class="project-header">
+            <p style="letter-spacing: 4px; color: var(--accent-gold); font-size: 0.8rem;">HOTEL BOUTIQUE</p>
+            <h2>ALBA</h2>
+        </div>
+        <img src="https://res.cloudinary.com/dhsxjwlue/image/upload/v1777566285/fachada_dsxlr5.jpg" style="width: 100%; height: 500px; object-fit: cover; margin-bottom: 30px;" alt="Fachada Alba">
+        <div class="alba-renders">
+            <div class="alba-card">
+                <img src="https://res.cloudinary.com/dhsxjwlue/image/upload/v1777566285/restauran_wbfh8k.jpg" alt="Restaurante">
+                <p style="margin-top: 10px; font-size: 0.7rem; letter-spacing: 2px;">ESPACIO GASTRONÓMICO</p>
+            </div>
+            <div class="alba-card">
+                <img src="https://res.cloudinary.com/dhsxjwlue/image/upload/v1777566285/habitacion_u6jg1y.jpg" alt="Habitación">
+                <p style="margin-top: 10px; font-size: 0.7rem; letter-spacing: 2px;">SUITE CONTEMPORÁNEA</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        &copy; 2026 Verónica Azucena Flores Girón | Arquitectura e Innovación
+    </footer>
+
+    <script>
+        // Script para el movimiento dinámico al hacer scroll
+        window.addEventListener('scroll', () => {
+            const reveals = document.querySelectorAll('.reveal');
+            reveals.forEach(reveal => {
+                const windowHeight = window.innerHeight;
+                const revealTop = reveal.getBoundingClientRect().top;
+                const revealPoint = 150;
+                if (revealTop < windowHeight - revealPoint) {
+                    reveal.classList.add('active');
+                }
+            });
+        });
+        // Activar la primera sección al cargar
+        window.dispatchEvent(new Event('scroll'));
+    </script>
+</body>
+</html>
