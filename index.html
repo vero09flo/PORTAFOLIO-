@@ -4,203 +4,338 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portafolio | Verónica Azucena Flores Girón</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400;1,500&family=Raleway:wght@200;300;400&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <!-- Fuentes de Alta Gama -->
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Montserrat:wght@200;300;400;500&display=swap" rel="stylesheet">
+    
+    <!-- Biblioteca de Animaciones AOS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
     <style>
-        /* CONFIGURACIÓN GLOBAL Y VARIABLES */
         :root {
-            --bg-color: #fdfbf7;
-            --text-color: #2c2c2c;
-            --accent-color: #8d7b68;
-            --white: #ffffff;
-            --accent-green: #8da399;
-            --accent-gold: #a68a64;
+            --bg-body: #fdfbf7;
+            --bg-white: #ffffff;
+            --text-main: #1a1a1a;
+            --text-muted: #555555;
+            --accent: #8d7b68;
+            --accent-light: #c9ada7;
+            --border: #eeeeee;
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
-        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+
         body {
             font-family: 'Montserrat', sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            line-height: 1.6;
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            line-height: 1.8;
+            font-weight: 300;
             overflow-x: hidden;
         }
 
-        /* NAVEGACIÓN DINÁMICA */
+        h1, h2, h3, .serif {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 400;
+            color: var(--text-main);
+        }
+
+        /* Navegación */
         nav {
             position: fixed;
             top: 0;
             width: 100%;
-            background: rgba(253, 251, 247, 0.95);
-            padding: 20px;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(10px);
+            padding: 20px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-main);
+            font-size: 0.7rem;
+            letter-spacing: 3px;
+            margin-left: 30px;
+            text-transform: uppercase;
+            transition: 0.3s;
+            position: relative;
+        }
+
+        .nav-links a:hover { color: var(--accent); }
+
+        /* Hero */
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 10%;
+        }
+
+        .hero img.logo { 
+            width: 110px; 
+            margin-bottom: 35px; 
+            border-radius: 50%; 
+            border: 1px solid var(--border); 
+            padding: 5px;
+            animation: pulse 3s infinite ease-in-out;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        h1 {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            letter-spacing: 12px;
+            text-transform: uppercase;
+            margin-bottom: 25px;
+            line-height: 1.2;
+        }
+
+        /* Secciones */
+        section { padding: 120px 10%; border-bottom: 1px solid var(--border); }
+        
+        .section-title {
+            font-size: 3.5rem;
+            margin-bottom: 70px;
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 7px;
+        }
+
+        .project-info { max-width: 850px; margin: 0 auto 50px auto; }
+        .project-info p { color: var(--text-muted); text-align: justify; font-size: 1.05rem; }
+
+        /* Imágenes */
+        .full-width-img, .grid-item {
+            background: #fff;
+            border: 1px solid var(--border);
+            overflow: hidden;
+            transition: transform 0.6s ease;
+        }
+
+        .full-width-img img, .grid-item img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 1.2s ease;
+        }
+
+        .visual-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .levels-row {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            margin-top: 30px;
+        }
+        .levels-row img { object-fit: contain !important; height: 350px; }
+
+        .img-caption, .grid-item span {
+            display: block;
+            text-align: center;
+            font-size: 0.75rem;
+            margin: 15px 0;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--accent);
+        }
+
+        /* Perfil */
+        .profile-layout {
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        /* Footer Centrado */
+        .contact-footer {
+            background-color: var(--bg-white);
+            text-align: center;
+            padding: 120px 10%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .btn-container {
             display: flex;
             justify-content: center;
             gap: 20px;
-            z-index: 1000;
-            border-bottom: 1px solid #eee;
+            flex-wrap: wrap;
+            margin-top: 20px;
         }
 
-        nav a {
+        .btn-contact {
+            display: inline-block;
+            padding: 18px 45px;
+            border: 1px solid var(--accent);
             text-decoration: none;
-            color: var(--text-color);
-            font-size: 0.7rem;
-            letter-spacing: 2px;
+            color: var(--text-main);
+            letter-spacing: 3px;
+            font-size: 0.75rem;
             text-transform: uppercase;
-            transition: 0.3s;
+            transition: 0.4s;
+            min-width: 250px;
         }
 
-        nav a:hover { color: var(--accent-color); }
+        .btn-contact:hover { background: var(--accent); color: white; transform: translateY(-3px); }
 
-        /* ANIMACIONES DE ENTRADA */
-        .reveal {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 1s ease-out;
-        }
-
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* --- SECCIÓN 1: INICIO (BIO) --- */
-        #inicio { height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; }
-        .logo-main { width: 140px; margin-bottom: 2.5rem; }
-        h1 { font-family: 'Playfair Display', serif; font-size: clamp(1.5rem, 5vw, 2.8rem); letter-spacing: 5px; text-transform: uppercase; font-weight: 500; }
-        .profile-section { padding: 100px 10%; display: grid; grid-template-columns: 1fr 1fr; gap: 60px; background: var(--white); }
-        .image-wrapper { position: relative; width: 100%; max-width: 400px; }
-        .image-wrapper img { width: 100%; position: relative; z-index: 2; }
-        .image-wrapper::after { content: ''; position: absolute; top: 20px; left: 20px; width: 100%; height: 100%; border: 1px solid var(--accent-color); z-index: 1; }
-        .software-tag { border: 1px solid #ddd; padding: 6px 15px; font-size: 0.7rem; text-transform: uppercase; margin: 5px; display: inline-block; }
-
-        /* --- SECCIÓN 2: CO-LIVING --- */
-        #coliving { background: #fdfcfb; padding: 100px 5%; }
-        .project-header { text-align: center; margin-bottom: 60px; }
-        .project-header h2 { font-family: 'Playfair Display', serif; font-size: 3rem; }
-        .coliving-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
-        .visual-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; margin-top: 40px; }
-        .visual-grid img { width: 100%; height: 300px; object-fit: cover; }
-
-        /* --- SECCIÓN 3: STORHET --- */
-        #storhet { background: #ffffff; padding: 100px 5%; border-top: 1px solid #eee; }
-        .storhet-gallery { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; margin: 40px 0; }
-        .storhet-gallery img { width: 100%; height: 400px; object-fit: cover; transition: 0.5s; }
-        .storhet-gallery img:hover { filter: brightness(1.1); transform: scale(1.02); }
-
-        /* --- SECCIÓN 4: ALBA --- */
-        #alba { background: #fdfaf6; padding: 100px 5%; }
-        .alba-renders { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-top: 40px; }
-        .alba-card { background: white; padding: 15px; border: 1px solid #e0ddd7; text-align: center; }
-        .alba-card img { width: 100%; }
-
-        footer { text-align: center; padding: 60px; font-size: 0.7rem; letter-spacing: 2px; color: #888; text-transform: uppercase; }
-
-        @media (max-width: 768px) {
-            .profile-section, .coliving-grid, .storhet-gallery, .alba-renders { grid-template-columns: 1fr; }
-            h1 { font-size: 1.8rem; }
-        }
+        @media (max-width: 900px) { .levels-row { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 768px) { .profile-layout { grid-template-columns: 1fr; } .nav-links { display: none; } }
     </style>
 </head>
 <body>
 
     <nav>
-        <a href="#inicio">Inicio</a>
-        <a href="#coliving">Co-living</a>
-        <a href="#storhet">Storhet</a>
-        <a href="#alba">Alba</a>
+        <div style="font-weight: 500; letter-spacing: 4px; font-size: 0.8rem;">PORTAFOLIO</div>
+        <div class="nav-links">
+            <a href="#perfil">Sobre Mi</a>
+            <a href="#alba">Alba</a>
+            <a href="#storhet">Storhet</a>
+            <a href="#coliving">Co-living</a>
+            <a href="#contacto">Contacto</a>
+        </div>
     </nav>
 
-    <!-- INICIO / BIO -->
-    <header id="inicio">
-        <img src="https://res.cloudinary.com/dhsxjwlue/image/upload/v1777566764/logo_q3lojo.jpg" alt="Logo" class="logo-main">
-        <h1>Verónica Azucena Flores Girón</h1>
-        <p style="font-family: 'Playfair Display', serif; font-style: italic; color: var(--accent-color);">"Transformando ideas en experiencias habitables"</p>
+    <header class="hero" id="perfil" data-aos="fade-in">
+        <img src="https://res.cloudinary.com/dhsxjwlue/image/upload/v1777566764/logo_q3lojo.jpg" alt="Logo" class="logo">
+        <h1 data-aos="fade-up" data-aos-delay="300">VERÓNICA AZUCENA FLORES GIRÓN</h1>
+        <p data-aos="fade-up" data-aos-delay="500">"La arquitectura va más allá de construir espacios; transforma ideas en experiencias habitables."</p>
     </header>
 
-    <section class="profile-section reveal">
-        <div class="image-wrapper">
-            <img src="https://res.cloudinary.com/dhsxjwlue/image/upload/v1777568626/veronicaflores_ky6ds9.jpg" alt="Verónica Flores">
-        </div>
-        <div class="bio-content">
-            <h2 style="font-family: 'Playfair Display', serif; margin-bottom: 20px;">SOBRE MI</h2>
-            <p>Estudiante de arquitectura de 22 años enfocada en la funcionalidad y calidad espacial a través de herramientas digitales e inteligencia artificial.</p>
-            <div style="margin-top: 20px;">
-                <span class="software-tag">AutoCAD</span> <span class="software-tag">Revit</span> <span class="software-tag">V-Ray</span> <span class="software-tag">D5 Render</span>
+    <section>
+        <div class="profile-layout">
+            <div class="full-width-img" data-aos="fade-right">
+                <img src="https://res.cloudinary.com/dhsxjwlue/image/upload/v1777568626/veronicaflores_ky6ds9.jpg" alt="Verónica Flores">
+            </div>
+            <div class="project-info" data-aos="fade-left">
+                <h3 class="serif" style="font-size: 2rem; margin-bottom: 20px;">Sobre Mi</h3>
+                <p>Soy Verónica Azucena Flores Girón, estudiante de arquitectura de 22 años cursando el 15° trimestre en ITSMHUS Norte. Mi enfoque se centra en transformar ideas abstractas en realidades tangibles que priorizan la funcionalidad y la calidad espacial.</p>
+                <p>Me apasiona el uso estratégico de herramientas digitales e inteligencia artificial para elevar la experiencia humana a través de la claridad conceptual.</p>
+                <div style="display: flex; gap: 15px; flex-wrap: wrap; margin-top: 30px; font-size: 0.65rem; letter-spacing: 2px;">
+                    <span style="border-bottom: 1px solid var(--accent); padding-bottom: 5px;">AUTOCAD</span>
+                    <span style="border-bottom: 1px solid var(--accent); padding-bottom: 5px;">REVIT</span>
+                    <span style="border-bottom: 1px solid var(--accent); padding-bottom: 5px;">D5 RENDER</span>
+                    <span style="border-bottom: 1px solid var(--accent); padding-bottom: 5px;">SKETCHUP</span>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- PROYECTO 1: CO-LIVING -->
-    <section id="coliving" class="reveal">
-        <div class="project-header">
-            <p style="letter-spacing: 4px; color: var(--accent-green); font-size: 0.8rem;">DEPARTAMENTOS, CAFÉ Y HUERTO</p>
-            <h2>CO-LIVING</h2>
+    <!-- ALBA -->
+    <section id="alba">
+        <h2 class="section-title serif" data-aos="fade-up">ALBA | Hotel Boutique</h2>
+        <div class="project-info" data-aos="fade-up">
+            <p>El concepto se basa en respetar y conservar la arquitectura contemporánea existente, evitando demoliciones y priorizando la integración de lo nuevo con lo ya construido. El resultado es un hotel que combina pasado y presente, ofreciendo al huésped un recorrido especial en un ambiente exclusivo y sostenible.</p>
         </div>
-        <div class="coliving-grid">
-            <div>
-                <h3 style="font-family: 'Playfair Display', serif; margin-bottom: 15px;">CONCEPTO</h3>
-                <p>Ecosistema residencial dinámico que integra cuatro departamentos únicos, un café y la preservación de un huerto como corazón verde del conjunto.</p>
-            </div>
-            <img src="https://res.cloudinary.com/dhsxjwlue/image/upload/v1777566727/r1_nu1hpz.jpg" style="width: 100%;" alt="Exterior Co-living">
+        <div class="full-width-img" data-aos="zoom-in-up">
+            <img src="https://res.cloudinary.com/dhsxjwlue/image/upload/v1777566285/fachada_dsxlr5.jpg" alt="Fachada Alba">
+            <span class="img-caption">Fachada Principal</span>
         </div>
         <div class="visual-grid">
-            <img src="https://res.cloudinary.com/dhsxjwlue/image/upload/v1777566726/r2_enpdxa.jpg" alt="R2">
-            <img src="https://res.cloudinary.com/dhsxjwlue/image/upload/v1777566726/r3_hgfi8p.jpg" alt="R3">
+            <div class="grid-item" data-aos="fade-up"><img src="https://res.cloudinary.com/dhsxjwlue/image/upload/v1777566285/restauran_wbfh8k.jpg" alt="Restaurante"><span>Espacio Gastronómico</span></div>
+            <div class="grid-item" data-aos="fade-up" data-aos-delay="200"><img src="https://res.cloudinary.com/dhsxjwlue/image/upload/v1777566285/habitacion_u6jg1y.jpg" alt="Suite"><span>Suite Contemporánea</span></div>
+        </div>
+        <div class="full-width-img" data-aos="zoom-in-up">
+            <img src="https://res.cloudinary.com/dhsxjwlue/image/upload/v1777566285/planta_possqb.jpg" alt="Plantas">
+            <span class="img-caption">Plantas Arquitectónicas</span>
         </div>
     </section>
 
-    <!-- PROYECTO 2: STORHET -->
-    <section id="storhet" class="reveal">
-        <div class="project-header">
-            <p style="letter-spacing: 4px; color: #1a1a1a; font-size: 0.8rem;">DOSSIER ARQUITECTÓNICO</p>
-            <h2 style="letter-spacing: 10px;">STORHET</h2>
+    <!-- STORHET -->
+    <section id="storhet" style="background: #f8f8f8;">
+        <h2 class="section-title serif" data-aos="fade-up">STORHET</h2>
+        <div class="project-info" data-aos="fade-up">
+            <p>Edificio de uso mixto conformado por 14 departamentos de 78 m² y 2 locales comerciales de 50 m² en planta baja. La propuesta se caracteriza por un aprovechamiento óptimo del espacio y una organización funcional que separa adecuadamente las áreas habitacionales de las comerciales.</p>
         </div>
-        <p style="text-align: center; max-width: 800px; margin: 0 auto;">Edificio de uso mixto con 14 departamentos y 2 locales comerciales, priorizando una organización clara y funcional.</p>
-        <div class="storhet-gallery">
-            <img src="https://res.cloudinary.com/dhsxjwlue/image/upload/v1777566710/3_cwzwfq.jpg" alt="Fachada">
-            <img src="https://res.cloudinary.com/dhsxjwlue/image/upload/v1777566710/COMPETO_deyx5j.jpg" alt="Estancia">
-            <img src="https://res.cloudinary.com/dhsxjwlue/image/upload/v1777566710/RECAMARA2_sqtncj.jpg" alt="Privado">
+        <div class="full-width-img" data-aos="zoom-in-up">
+            <img src="https://res.cloudinary.com/dhsxjwlue/image/upload/v1777566710/3_cwzwfq.jpg" alt="Storhet Fachada">
+            <span class="img-caption">Fachada Principal</span>
         </div>
-    </section>
-
-    <!-- PROYECTO 3: ALBA -->
-    <section id="alba" class="reveal">
-        <div class="project-header">
-            <p style="letter-spacing: 4px; color: var(--accent-gold); font-size: 0.8rem;">HOTEL BOUTIQUE</p>
-            <h2>ALBA</h2>
+        <div class="visual-grid">
+            <div class="grid-item" data-aos="fade-right"><img src="https://res.cloudinary.com/dhsxjwlue/image/upload/v1777566710/COMPETO_deyx5j.jpg" alt="Estancia"><span>Estancia y Comedor</span></div>
+            <div class="grid-item" data-aos="fade-left"><img src="https://res.cloudinary.com/dhsxjwlue/image/upload/v1777566710/RECAMARA2_sqtncj.jpg" alt="Recámara"><span>Zona Privada</span></div>
+            <div class="grid-item" data-aos="fade-up"><img src="https://res.cloudinary.com/dhsxjwlue/image/upload/v1777566710/SERVICIO_njuz7d.jpg" alt="Baño"><span>Detalles de Servicio</span></div>
         </div>
-        <img src="https://res.cloudinary.com/dhsxjwlue/image/upload/v1777566285/fachada_dsxlr5.jpg" style="width: 100%; height: 500px; object-fit: cover; margin-bottom: 30px;" alt="Fachada Alba">
-        <div class="alba-renders">
-            <div class="alba-card">
-                <img src="https://res.cloudinary.com/dhsxjwlue/image/upload/v1777566285/restauran_wbfh8k.jpg" alt="Restaurante">
-                <p style="margin-top: 10px; font-size: 0.7rem; letter-spacing: 2px;">ESPACIO GASTRONÓMICO</p>
-            </div>
-            <div class="alba-card">
-                <img src="https://res.cloudinary.com/dhsxjwlue/image/upload/v1777566285/habitacion_u6jg1y.jpg" alt="Habitación">
-                <p style="margin-top: 10px; font-size: 0.7rem; letter-spacing: 2px;">SUITE CONTEMPORÁNEA</p>
-            </div>
+        <div class="full-width-img" data-aos="zoom-in-up">
+            <img src="https://res.cloudinary.com/dhsxjwlue/image/upload/v1777566710/planta_jk0gma.jpg" alt="Planta Storhet">
+            <span class="img-caption">Planta Arquitectónica</span>
         </div>
     </section>
 
-    <footer>
-        &copy; 2026 Verónica Azucena Flores Girón | Arquitectura e Innovación
+    <!-- CO-LIVING -->
+    <section id="coliving">
+        <h2 class="section-title serif" data-aos="fade-up">CO-LIVING</h2>
+        <div class="project-info" data-aos="fade-up">
+            <p>Ecosistema residencial dinámico que integra cuatro departamentos de diseño único, un café y la preservación estratégica de un huerto familiar preexistente. La propuesta prioriza espacios comunes que fomentan la interacción social.</p>
+        </div>
+        
+        <div class="full-width-img" data-aos="zoom-in-up">
+            <img src="https://res.cloudinary.com/dhsxjwlue/image/upload/v1777566727/r1_nu1hpz.jpg" alt="Fachada Co-living">
+            <span class="img-caption">Acceso y Fachada Principal</span>
+        </div>
+
+        <div class="full-width-img" data-aos="zoom-in-up">
+            <img src="https://res.cloudinary.com/dhsxjwlue/image/upload/v1777566725/conjunto_hlb7cc.jpg" alt="Planta Conjunto">
+            <span class="img-caption">Planta de Conjunto</span>
+        </div>
+
+        <div class="visual-grid">
+            <div class="grid-item" data-aos="fade-up"><img src="https://res.cloudinary.com/dhsxjwlue/image/upload/v1777566726/r2_enpdxa.jpg" alt="Huerto"><span>Huerto y Convivencia</span></div>
+            <div class="grid-item" data-aos="fade-up" data-aos-delay="200"><img src="https://res.cloudinary.com/dhsxjwlue/image/upload/v1777566726/r3_hgfi8p.jpg" alt="Detalle Huerto"><span>Detalle de Huerto</span></div>
+        </div>
+
+        <div class="levels-row">
+            <div class="grid-item" data-aos="fade-up" data-aos-delay="100"><img src="https://res.cloudinary.com/dhsxjwlue/image/upload/v1777566725/n1_nsuvnv.jpg" alt="Nivel 1"><span>Nivel 1</span></div>
+            <div class="grid-item" data-aos="fade-up" data-aos-delay="200"><img src="https://res.cloudinary.com/dhsxjwlue/image/upload/v1777566726/n2_sgdm1d.jpg" alt="Nivel 2"><span>Nivel 2</span></div>
+            <div class="grid-item" data-aos="fade-up" data-aos-delay="300"><img src="https://res.cloudinary.com/dhsxjwlue/image/upload/v1777566726/n3_jqkunt.jpg" alt="Nivel 3"><span>Nivel 3</span></div>
+            <div class="grid-item" data-aos="fade-up" data-aos-delay="400"><img src="https://res.cloudinary.com/dhsxjwlue/image/upload/v1777566726/n4_gjjc36.jpg" alt="Nivel 4"><span>Nivel 4</span></div>
+        </div>
+    </section>
+
+    <!-- CONTACTO CENTRADO -->
+    <footer class="contact-footer" id="contacto" data-aos="fade-in">
+        <h2 class="section-title serif">Contacto</h2>
+        <p style="letter-spacing: 4px; text-transform: uppercase; font-size: 0.9rem; color: var(--accent); margin-bottom: 30px;">
+            VERÓNICA AZUCENA FLORES GIRÓN
+        </p>
+        
+        <div class="btn-container">
+            <a href="https://wa.me/526361165429" class="btn-contact" target="_blank">WhatsApp: +52 636 116 54 29</a>
+            <a href="mailto:vero09flo@gmail.com" class="btn-contact">Email: vero09flo@gmail.com</a>
+        </div>
+
+        <div style="margin-top: 80px; font-size: 0.65rem; letter-spacing: 4px; color: #aaa; text-transform: uppercase;">
+            © 2026 VERÓNICA AZUCENA FLORES GIRÓN | ARQUITECTURA
+        </div>
     </footer>
 
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        // Script para el movimiento dinámico al hacer scroll
-        window.addEventListener('scroll', () => {
-            const reveals = document.querySelectorAll('.reveal');
-            reveals.forEach(reveal => {
-                const windowHeight = window.innerHeight;
-                const revealTop = reveal.getBoundingClientRect().top;
-                const revealPoint = 150;
-                if (revealTop < windowHeight - revealPoint) {
-                    reveal.classList.add('active');
-                }
-            });
+        AOS.init({
+            duration: 1000,
+            once: true,
+            offset: 100,
+            easing: 'ease-in-out'
         });
-        // Activar la primera sección al cargar
-        window.dispatchEvent(new Event('scroll'));
     </script>
 </body>
 </html>
